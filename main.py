@@ -22,11 +22,17 @@ try:
         # If the touch sensor is pressed
         if touchButton:
 
+            # Turn off BrickPi on board LED
+            BP.set_led(1) 
+
             # Turn on Raspberry Pi on board LED
             os.system('echo 1 | sudo dd status=none of=/sys/class/leds/led0/brightness') 
         
         # If the touch sensor is released
         else:
+
+            # Turn off BrickPi on board LED
+            BP.set_led(0)
 
             # Turn off Raspberry Pi on board LED
             os.system('echo 0 | sudo dd status=none of=/sys/class/leds/led0/brightness') 
@@ -39,3 +45,6 @@ except KeyboardInterrupt:
     
     # Unconfigure the sensors
     BP.reset_all() 
+
+    # Turn off Raspberry Pi on board LED
+    os.system('echo 0 | sudo dd status=none of=/sys/class/leds/led0/brightness') 
