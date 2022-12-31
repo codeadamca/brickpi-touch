@@ -22,8 +22,6 @@ try:
         # If the touch sensor is pressed
         if touchButton:
 
-            BP.set_motor_power(BP.PORT_A, 100)
-
             # Turn off BrickPi on board LED
             BP.set_led(1) 
 
@@ -32,8 +30,6 @@ try:
         
         # If the touch sensor is released
         else:
-
-            BP.set_motor_power(BP.PORT_A, 0)
 
             # Turn off BrickPi on board LED
             BP.set_led(0)
